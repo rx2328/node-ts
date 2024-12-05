@@ -1,0 +1,10 @@
+node_modules
+**/*.js
+.vscode
+logs/*.log
+package-lock.json
+.env
+yarn.lock
+yarn-error.log
+workspace.tar
+redis/*
