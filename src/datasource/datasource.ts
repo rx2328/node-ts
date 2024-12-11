@@ -16,6 +16,11 @@ const AppSource = new DataSource({
   migrationsTableName: "migrations",
 });
 
+//Only need to pass name of the file
+// "migration:generate": "yarn run build && yarn run typeorm -- migration:generate -d dist/datasource/datasource.js ./src/migration",
+// yarn migration:generate role-added
+
+// have to pass the path along with migration name
 // yarn migration:generate ./src/migration/user-role
 // yarn run migration:run
 export default AppSource;
