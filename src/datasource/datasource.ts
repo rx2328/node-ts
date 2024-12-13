@@ -11,7 +11,7 @@ const AppSource = new DataSource({
   type: "postgres",
   synchronize: false,
   migrationsRun: true,
-  entities: ["dist/entities/*.entity.{ts,js}"],
+  entities: ["**/*.entity.{ts,js}"],
   migrations: ["dist/migration/**/*.{ts,js}"],
   migrationsTableName: "migrations",
 });

@@ -23,7 +23,19 @@ const createUserHandler = async (
   next: NextFunction
 ): Promise<void> => {
   try {
-    const { password } = req.body;
+    const { password, email } = req.body;
+
+    const isUserExists = await findUserByEmail({ email });
+
+    if (isUserExists) {
+      formatResponse({
+        res,
+        status: 400,
+        message: "user already exist with this email address",
+      });
+      return;
+    }
+
     const hashPassword = await encryptPassword({ password });
     const user = {
       ...req.body,

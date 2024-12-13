@@ -1,11 +1,12 @@
 import { FindOptionsRelations } from "typeorm";
 import AppSource from "../datasource/datasource";
-import { User, UserType } from "../entities/user.entity";
+import { User } from "../entities/user.entity";
 
 const userRepository = AppSource.getRepository(User);
 
 export const createUser = async (input: Partial<User>) => {
   const { id } = await userRepository.save(userRepository.create(input));
+  console.log("🚀 ~ createUser ~ id:", id);
 
   return await userRepository.findOne({
     where: { id: id },
@@ -35,7 +36,6 @@ export const findUserByUserId = async ({ userId }: { userId: number }) => {
 
 export const findAllUsers = async () => {
   return await userRepository.find({
-    select: ["id", "email", "name", "createdAt", "updatedAt", "deletedAt"],
     relations: { role: true },
   });
 };
