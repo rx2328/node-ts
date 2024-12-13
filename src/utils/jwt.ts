@@ -8,7 +8,7 @@ type JWTDataType = {
 };
 
 const signToken = ({ payload }: { payload: JWTDataType }): string => {
-  const secret: string = process.env.JWT_KEY ?? "JWT";
+  const secret: string = process.env.JWT_KEY;
 
   const token = jwt.sign(payload, secret, { expiresIn: "1 day" });
 
@@ -20,7 +20,7 @@ const verifyToken = ({
 }: {
   token?: string;
 }): JwtPayload & JWTDataType => {
-  const secret: string = process.env.JWT_KEY ?? "JWT";
+  const secret: string = process.env.JWT_KEY;
   try {
     const result: JwtPayload & JWTDataType = jwt.verify(
       token?.split(" ")?.[1],

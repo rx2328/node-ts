@@ -12,7 +12,7 @@ import { join } from "path";
 
 dotenv.config();
 const app: Express = express();
-const port = process.env.PORT || 3001;
+const port = process.env.PORT;
 
 const sslOptions = {
   key: fs.readFileSync(join(__dirname, "..", "cert/private.key")), // Path to your private key
@@ -23,8 +23,8 @@ AppSource.initialize()
   .then(() => {
     try {
       const options = {
-        host: process.env.REDIS_HOST ?? "localhost",
-        port: parseInt(process.env.REDIS_PORT ?? "6379"),
+        host: process.env.REDIS_HOST,
+        port: parseInt(process.env.REDIS_PORT),
       };
       RedisDataSource.initialize(options);
 

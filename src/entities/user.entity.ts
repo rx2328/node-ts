@@ -11,7 +11,7 @@ export class User extends Model {
   @Column({ unique: true })
   email: string;
 
-  @Column({ nullable: false })
+  @Column({ nullable: false, select: false })
   password: string;
 
   @OneToMany(() => Posts, (post) => post.createdBy)
